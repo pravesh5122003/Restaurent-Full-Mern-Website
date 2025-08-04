@@ -40,10 +40,11 @@ npm install
 npm start
 ```
 ### Frontend
+```bash
 cd client
 npm install
 npm run dev
-
+```
 ---
 ## 📂 How to Add This README
 1. Open your project folder in VS Code.
