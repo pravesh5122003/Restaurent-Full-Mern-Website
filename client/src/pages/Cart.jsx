@@ -222,7 +222,7 @@ const Cart = () => {
               </div>
             </div>
             <p className="text-center">
-              ${product.offerPrice * product.quantity}
+            ₹{product.offerPrice * product.quantity}
             </p>
             <button
               onClick={() => removeFromCart(product._id)}
@@ -355,7 +355,7 @@ const Cart = () => {
   onClick={() => setShowDineIn(true)}
   className="w-full py-3 mt-2 cursor-pointer bg-yellow-500 text-white font-medium hover:bg-yellow-600 transition"
 >
-  Dine In
+   For Dine In
 </button>
       </div>
       {showDineIn && (

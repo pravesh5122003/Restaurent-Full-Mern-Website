@@ -28,7 +28,7 @@ const Deals = () => {
       {/* ✅ Replaced <a> with <Link> */}
       <div className="flex justify-center">
         <Link
-          to="/products/dairy" // 👈 Change this to the actual path for your Dairy section
+          to="/" // 👈 Change this to the actual path for your Dairy section
           className="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-2xl text-lg md:text-xl shadow-lg transition-transform transform hover:scale-105 inline-block text-center"
         >
           🚀 Order Now
