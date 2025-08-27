@@ -3,26 +3,31 @@ import { useAppContext } from "../context/AppContext";
 import { Link, useParams } from "react-router-dom";
 import { assets } from "../assets/assets";
 import ProductCard from "../components/ProductCard";
+
 const SingleProduct = () => {
   const { products, navigate, addToCart } = useAppContext();
   const { id } = useParams();
   const [thumbnail, setThumbnail] = useState(null);
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const product = products.find((product) => product._id === id);
+
+  const product = products.find((p) => p._id === id);
   console.log("product", product);
+
+  // 🔹 Fix: Proper related products filter
   useEffect(() => {
-    if (products.length > 0) {
-      let productsCopy = products.slice();
-      productsCopy = productsCopy.filter(
-        (product) => product.category === product.category
+    if (products.length > 0 && product) {
+      const productsCopy = products.filter(
+        (p) => p.category?.toLowerCase() === product.category?.toLowerCase() && p._id !== product._id
       );
       setRelatedProducts(productsCopy.slice(0, 5));
     }
-  }, [products]);
+  }, [products, product]);
 
+  // 🔹 Fix: store filename (not full URL) in thumbnail
   useEffect(() => {
-    setThumbnail(product?.image[0] ? product.image[0] : null);
+    setThumbnail(product?.image?.[0] ?? null);
   }, [product]);
+
   return (
     product && (
       <div className="mt-16">
@@ -36,52 +41,47 @@ const SingleProduct = () => {
         </p>
 
         <div className="flex flex-col md:flex-row gap-16 mt-4">
+          {/* Left section - Images */}
           <div className="flex gap-3">
             <div className="flex flex-col gap-3">
               {product.image.map((image, index) => (
                 <div
                   key={index}
-                  onClick={() => 
-                    setThumbnail(`http://localhost:4000/images/${image}`)
-                  }
-                  className="border max-w-24 border-gray-500/30 rounded 
-                  overflow-hidden cursor-pointer"
+                  onClick={() => setThumbnail(image)} // 🔹 Only store filename
+                  className="border max-w-24 border-gray-500/30 rounded overflow-hidden cursor-pointer"
                 >
                   <img
-                    src={`http://localhost:4000/images/${product.image[0]}`}
+                    src={`http://localhost:4000/images/${encodeURIComponent(image)}`}
                     alt={`Thumbnail ${index + 1}`}
                   />
                 </div>
               ))}
             </div>
 
-            <div className="border border-gray-500/30 max-w-100 rounded 
-            overflow-hidden">
+            {/* Main Image */}
+            <div className="border border-gray-500/30 max-w-100 rounded overflow-hidden">
               <img
-                src={`http://localhost:4000/images/${thumbnail}`}
+                src={`http://localhost:4000/images/${encodeURIComponent(thumbnail ?? product.image[0])}`}
                 alt="Selected product"
               />
             </div>
           </div>
 
+          {/* Right section - Details */}
           <div className="text-sm w-full md:w-1/2">
             <h1 className="text-3xl font-medium">{product.name}</h1>
 
             <div className="flex items-center gap-0.5 mt-1">
               {Array(5)
                 .fill("")
-                .map(
-                  (_, i) =>
-                    product.rating >
-                    (
-                      <img
-                        src={i < 4 ? assets.star_icon : assets.star_dull_icon}
-                        alt="star"
-                        key={i}
-                        className="w-3.5 md:w-4"
-                      />
-                    )
-                )}
+                .map((_, i) => (
+                  <img
+                    src={i < 4 ? assets.star_icon : assets.star_dull_icon}
+                    alt="star"
+                    key={i}
+                    className="w-3.5 md:w-4"
+                  />
+                ))}
               <p className="text-base ml-2">(4)</p>
             </div>
 
@@ -120,18 +120,19 @@ const SingleProduct = () => {
             </div>
           </div>
         </div>
-        {/* related prodcuts  */}
+
+        {/* Related products */}
         <div className="flex flex-col items-center mt-20">
           <div className="flex flex-col items-center w-max">
             <p className="text-2xl font-medium">Related Products</p>
             <div className="w-20 h-0.5 bg-primary rounded-full mt-2"></div>
           </div>
 
-          <div className="my-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 items-center justify-center">
+          <div className="my-6 grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
             {relatedProducts
-              .filter((product) => product.inStock)
-              .map((product, index) => (
-                <ProductCard key={index} product={product} />
+              .filter((p) => p.inStock)
+              .map((p, index) => (
+                <ProductCard key={index} product={p} />
               ))}
           </div>
           <button
@@ -148,5 +149,5 @@ const SingleProduct = () => {
     )
   );
 };
-export default SingleProduct;
 
+export default SingleProduct;

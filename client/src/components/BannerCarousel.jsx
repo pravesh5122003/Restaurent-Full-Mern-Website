@@ -35,7 +35,7 @@ const BannerCarousel = () => {
         autoplay={{ delay: 3000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
         navigation={true}
-        className="w-full h-[200px] sm:h-[300px] md:h-[400px] rounded overflow-hidden"
+        className="w-full h-[200px] sm:h-[600px] md:h-[580px] rounded overflow-hidden"
       >
         {banners.map((banner, i) => (
           <SwiperSlide key={i}>

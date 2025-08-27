@@ -33,23 +33,26 @@ export const AppContextProvider = ({ children }) => {
   };
 
   // fetch user auth status ,user Data and cart items
+
   const fetchUser = async () => {
     try {
-      const { data }  = await axios.get("/api/user/is-auth",{
-        withCredentials: true, // ✅ This is required to send cookies
+      const { data } = await axios.get("/api/user/is-auth", {
+        withCredentials: true,
       });
-      
+  
       if (data.success) {
         setUser(data.user);
         setCartItems(data.user.cart);
       } else {
-        toast.error(data.message);
+        setUser(null);
+        setCartItems({});
       }
     } catch (error) {
-      toast.error(error.message);
+      console.warn("User not logged in yet");
+      setUser(null);
+      setCartItems({});
     }
   };
-
 
   // fetch products
   const fetchProducts = async () => {
