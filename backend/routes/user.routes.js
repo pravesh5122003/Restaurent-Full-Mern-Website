@@ -15,3 +15,4 @@ router.get("/is-auth", authUser, checkAuth);
 router.get("/logout", authUser, logout);
 
 export default router;
+ 
