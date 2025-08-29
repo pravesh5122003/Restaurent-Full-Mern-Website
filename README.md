@@ -13,7 +13,7 @@ This project is a **comprehensive, production-ready full-stack web application**
   - Seller dashboard for updating order status and tracking customer details
   - Stripe & Razorpay payment gateway integration
   - Secure authentication for users and sellers
-  - Real-time notifications and intuitive UX
+  - Real-time notifications and intuitive UX with better user interaction
 - **Professional Codebase:** Modular, maintainable, and scalable
 
 ---
