@@ -10,7 +10,7 @@ This project is a **comprehensive, production-ready full-stack web application**
 - **Advanced Features:**
   - Dynamic product catalog with size variants (Regular/Medium/Large)
   - Add to cart and order management with live updates
-  - Seller dashboard for updating order status and tracking customer details
+  - Seller dashboard for live updating order status and tracking customer details
   - Stripe & Razorpay payment gateway integration
   - Secure authentication for users and sellers
   - Real-time notifications and intuitive UX with better user interaction
