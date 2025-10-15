@@ -6,7 +6,7 @@ This project is a **comprehensive, production-ready full-stack web application**
 
 ## ✨ Key Highlights
 - **Modern Tech Stack:** React.js + Node.js + Express.js + MongoDB
-- **Responsive UI:** Optimized for desktops, tablets, and mobile devices
+- **Responsive UI:** Optimized for desktops, tablets, and mobile devices 
 - **Advanced Features:**
   - Dynamic product catalog with size variants (Regular/Medium/Large)
   - Add to cart and order management with live updates
