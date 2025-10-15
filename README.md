@@ -31,7 +31,7 @@ This project is a **comprehensive, production-ready full-stack web application**
 
 ---
 
-## 🚀 How to Run Locally
+## 🚀 How to Run Locally 
 
 ### Backend
 ```bash
