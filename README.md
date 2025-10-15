@@ -50,7 +50,7 @@ npm run dev
 1. Open your project folder in VS Code.
 2. In the **root directory** (the same folder where you see `backend`, `client`, `package.json`, etc.), **double-click `README.md` to open it.**
 3. **Delete everything inside `README.md`.**
-4. Paste the above content.
+4. Paste the above content. 
 5. **Save the file (Ctrl+S).**
 
 ---
