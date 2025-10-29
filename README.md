@@ -1,7 +1,7 @@
 # 🍽️  Restaurant Full-Stack MERN Application
 
 This project is a **comprehensive, production-ready full-stack web application** developed as an **outstanding final-year project**. It empowers restaurant businesses to streamline online ordering, dien-in,  real-time cart management, and secure payment workflows with better user interaction.
-
+ 
 ---
 
 ## ✨ Key Highlights
