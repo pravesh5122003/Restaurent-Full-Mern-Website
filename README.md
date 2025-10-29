@@ -4,7 +4,7 @@ This project is a **comprehensive, production-ready full-stack web application**
  
 ---
 
-## ✨ Key Highlights
+## ✨ Key Highlights 
 - **Modern Tech Stack:** React.js + Node.js + Express.js + MongoDB
 - **Responsive UI:** Optimized for desktops, tablets, and mobile devices 
 - **Advanced Features:** 
